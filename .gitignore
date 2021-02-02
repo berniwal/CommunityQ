@@ -1,0 +1,5 @@
+__pycache__/
+.idea/
+*.csv
+*.docx
+final_model.pt
