@@ -1,6 +1,12 @@
 # Visualization
 <img src="./visualizations/ground_truth.png" alt="drawing" width="45%"/> <img src="./visualizations/prediction.png" alt="drawing" width="45%"/>
 # How to Run
+## 0. Virtual Environment
+[Create a virtual environment](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/#creating-a-virtual-environment) using Python Version 3.8 and run
+
+```
+pip install -r requirements.txt
+```
 
 ## 1. Prepare data
 
