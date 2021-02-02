@@ -30,7 +30,7 @@ def prediction():
         text_length = float(request.args['text_length'])
         text_length = (text_length - model.mean.QuestionTextLength) / model.std.QuestionTextLength
     else:
-        return "Error: No text length field provided. Please specify text length of comment."
+        return "Error: No text_length field provided. Please specify text length of comment."
 
     x = torch.tensor([visits, text_length], dtype=torch.float32)
     out = model(x)
