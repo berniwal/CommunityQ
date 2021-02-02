@@ -1,5 +1,5 @@
 # Visualization
-<img src="./visualizations/ground_truth.png" alt="drawing" width="450"/> <img src="./visualizations/prediction.png" alt="drawing" width="450"/>
+<img src="./visualizations/ground_truth.png" alt="drawing" width="45%"/> <img src="./visualizations/prediction.png" alt="drawing" width="45%"/>
 # How to Run
 
 ## 1. Prepare data
