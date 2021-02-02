@@ -22,11 +22,13 @@ def home():
 def prediction():
     if 'visits' in request.args:
         visits = float(request.args['visits'])
+        visits = (visits - model.mean.VisitsLastYear) / model.std.VisitsLastYear
     else:
         return "Error: No visits field provided. Please specify number of visits of product page."
 
     if 'text_length' in request.args:
         text_length = float(request.args['text_length'])
+        text_length = (text_length - model.mean.QuestionTextLength) / model.std.QuestionTextLength
     else:
         return "Error: No text length field provided. Please specify text length of comment."
 

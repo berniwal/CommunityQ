@@ -19,7 +19,10 @@ class QuestionDataset(torch.utils.data.Dataset):
         self.x_raw = self.dataset[input_features]
         self.y_raw = self.dataset[output_features]
 
-        self.x = (self.x_raw - self.x_raw.mean()) / self.x_raw.std()
+        self.mean_x = self.x_raw.mean()
+        self.std_x = self.x_raw.std()
+
+        self.x = (self.x_raw - self.mean_x) / self.std_x
 
         self.x = self.x.to_numpy()
         self.y = self.y_raw.to_numpy()
@@ -35,8 +38,12 @@ class QuestionDataset(torch.utils.data.Dataset):
 
 class SimpleQuestionAnswerer(nn.Module):
     def __init__(self, input_dimension: int = 2, hidden_dimension: int = 1024, num_layers: int = 4,
-                 num_classes: int = 2, bias: bool = True):
+                 num_classes: int = 2, bias: bool = True, mean: pd.core.series.Series = None,
+                 std: pd.core.series.Series = None):
         super().__init__()
+        self.mean = mean
+        self.std = std
+
         self.fc_in = nn.Linear(input_dimension, hidden_dimension, bias=bias)
         self.fc_hidden = nn.ModuleList([
             nn.Linear(hidden_dimension, hidden_dimension, bias=bias) for i in range(num_layers)
@@ -79,14 +86,17 @@ def main(args):
                                  hidden_dimension=args['hidden_dimension'],
                                  num_layers=args['num_layers'],
                                  num_classes=2,
-                                 bias=args['bias'])
+                                 bias=args['bias'],
+                                 mean=train_dataset.mean_x,
+                                 std=train_dataset.std_x,
+                                 )
     print(net)
 
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.Adam(net.parameters(), lr=0.001)
 
     for epoch in range(args['epochs']):
-        pbar = tqdm(train_dataloader, desc='Epoch {}'.format(epoch))
+        pbar = tqdm(train_dataloader, desc='Epoch {}/{}'.format(epoch, args['epochs']))
         losses = []
         for idx, data in enumerate(pbar):
             x, y = data
