@@ -21,13 +21,19 @@ def home():
 @app.route('/api/prediction', methods=['GET'])
 def prediction():
     if 'visits' in request.args:
-        visits = float(request.args['visits'])
+        try:
+            visits = float(request.args['visits'])
+        except ValueError:
+            return "Error: visits field needs to be a integer or float"
         visits = (visits - model.mean.VisitsLastYear) / model.std.VisitsLastYear
     else:
         return "Error: No visits field provided. Please specify number of visits of product page."
 
     if 'text_length' in request.args:
-        text_length = float(request.args['text_length'])
+        try:
+            text_length = float(request.args['text_length'])
+        except ValueError:
+            return "Error: text_length field needs to be a integer or float"
         text_length = (text_length - model.mean.QuestionTextLength) / model.std.QuestionTextLength
     else:
         return "Error: No text_length field provided. Please specify text length of comment."
