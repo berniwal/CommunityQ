@@ -1,3 +1,6 @@
+# Visualization
+![ground-truth](./visualizations/ground_truth.png) ![prediction](./visualizations/prediction.png)
+<img src="./visualizations/ground_truth.png" alt="drawing" width="200"/>
 # How to Run
 
 ## 1. Prepare data
