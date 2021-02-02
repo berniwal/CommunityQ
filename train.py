@@ -37,7 +37,7 @@ class QuestionDataset(torch.utils.data.Dataset):
 
 
 class SimpleQuestionAnswerer(nn.Module):
-    def __init__(self, input_dimension: int = 2, hidden_dimension: int = 1024, num_layers: int = 4,
+    def __init__(self, input_dimension: int = 2, hidden_dimension: int = 128, num_layers: int = 1,
                  num_classes: int = 2, bias: bool = True, mean: pd.core.series.Series = None,
                  std: pd.core.series.Series = None):
         super().__init__()
