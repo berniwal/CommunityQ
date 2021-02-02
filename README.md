@@ -1,6 +1,5 @@
 # Visualization
-![ground-truth](./visualizations/ground_truth.png) ![prediction](./visualizations/prediction.png)
-<img src="./visualizations/ground_truth.png" alt="drawing" width="200"/>
+<img src="./visualizations/ground_truth.png" alt="drawing" width="450"/> <img src="./visualizations/prediction.png" alt="drawing" width="450"/>
 # How to Run
 
 ## 1. Prepare data
