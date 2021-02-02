@@ -67,25 +67,6 @@ def main(args):
     input_features = ['VisitsLastYear', 'QuestionTextLength']
     output_features = ['IsQuestionForCommunity']
 
-    input_features_numerical = ['VerifiedBuyers', 'VisitsLastYear',
-                                'QuestionTextLength', 'ProductLifecycleDays', 'ProductQuestions',
-                                'ProductQuestionsFractionAnswered',
-                                'ProductQuestionsFractionAnsweredWithinWeek',
-                                'ProductQuestionsHaveNonEmployeeAnswers',
-                                'ProductQuestionsHaveNonEmployeeAnswersWithinWeek',
-                                'ProductQuestionsNonEmployeeAnswers',
-                                'ProductQuestionsNonEmployeeAnswersWithinWeek',
-                                'VerifiedBuyersLastMonth', 'VerifiedBuyersLastYear',
-                                'VerifiedBuyersWithLanguage',
-                                'VerifiedBuyersWithLanguageAnswersTotalScore',
-                                'VerifiedBuyersWithLanguageBestAnswers',
-                                'VerifiedBuyersWithLanguageHaveAnswered',
-                                'VerifiedBuyersWithLanguageLastMonth',
-                                'VerifiedBuyersWithLanguageLastYear',
-                                'VerifiedBuyersWithLanguageTotalAnswers',
-                                'VerifiedBuyersWithLanguageTotalAnswersAsVerifiedBuyers',
-                                'VisitsLastMonth']
-
     train_dataset = QuestionDataset(dataset_directory=args['dataset'],
                                     input_features=input_features,
                                     output_features=output_features,
