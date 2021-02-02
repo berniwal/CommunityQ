@@ -128,6 +128,7 @@ def main(args):
     tn, fp, fn, tp = confusion_matrix(y, y_pred).ravel()
     print('TN: {} FP: {} FN: {} TP: {}'.format(tn, fp, fn, tp))
 
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Input Arguments')
     parser.add_argument('--dataset', default='./data/juniorMLE_dataset.csv', type=str, help='Input Path to Dataset')
